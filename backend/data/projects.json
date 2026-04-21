@@ -1,0 +1,32 @@
+[
+  {
+    "id": "proj-1",
+    "title": "S3 Pre-Signed URL Generator",
+    "description": "Built a secure system to generate time-limited URLs for objects stored in AWS S3. Enables controlled and temporary access for secure file sharing without exposing bucket credentials.",
+    "stack": ["AWS S3", "Python", "IAM", "Boto3"],
+    "github": "https://github.com/praboolbharti",
+    "live": "",
+    "tag": "CLOUD",
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "proj-2",
+    "title": "Real-Time Infrastructure Monitoring",
+    "description": "Developed a full monitoring system on AWS EC2 using Prometheus and Grafana. Visualized live metrics — CPU usage, memory, disk I/O, network traffic, and uptime — with custom dashboards.",
+    "stack": ["AWS EC2", "Prometheus", "Grafana", "Linux"],
+    "github": "https://github.com/praboolbharti",
+    "live": "",
+    "tag": "DEVOPS",
+    "createdAt": "2025-02-01T00:00:00.000Z"
+  },
+  {
+    "id": "proj-3",
+    "title": "Portfolio Website (This Site)",
+    "description": "Full-stack portfolio with a Node.js REST API backend. Deployed on AWS EC2 with Nginx as reverse proxy, containerized using Docker + Docker Compose, and automated with a GitHub Actions CI/CD pipeline.",
+    "stack": ["Node.js", "Docker", "Nginx", "GitHub Actions", "EC2"],
+    "github": "https://github.com/praboolbharti",
+    "live": "",
+    "tag": "FULLSTACK",
+    "createdAt": "2025-03-01T00:00:00.000Z"
+  }
+]

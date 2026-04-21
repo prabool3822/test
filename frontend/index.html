@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Prabool | DevOps Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-logo">pb<span class="dot">.</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger">&#9776;</button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg-text">DEVOPS</div>
+    <div class="hero-content">
+      <div class="hero-tag">Available for opportunities</div>
+      <h1 class="hero-name">
+        Prabool<br/>
+        <span class="italic">Bharti</span>
+      </h1>
+      <p class="hero-sub">DevOps Trainee & Cloud Enthusiast<br/>Building systems that <em>actually</em> work.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">View Projects</a>
+        <a href="#blog" class="btn-ghost">Read Blog →</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num" id="stat-projects">0</span><span class="stat-label">Projects</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num" id="stat-posts">0</span><span class="stat-label">Blog Posts</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num">AWS</span><span class="stat-label">Certified (soon)</span></div>
+    </div>
+    <div class="scroll-hint">scroll down ↓</div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-label">// 01 about</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <h2>From commands<br/><span class="italic">to infrastructure.</span></h2>
+        <p>I'm a DevOps trainee on a mission to go from "what is a container?" to "I designed that entire pipeline." Currently learning by building — deploying real projects on EC2, containerizing with Docker, and setting up CI/CD pipelines.</p>
+        <p>I believe in learning by doing. Every broken deployment is a lesson. Every fixed bug is a win.</p>
+        <div class="about-tools">
+          <span>Linux</span><span>AWS EC2</span><span>Docker</span><span>Nginx</span><span>Prometheus</span><span>Grafana</span><span>Jenkins</span><span>Python</span><span>GitHub Actions</span>
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="card-inner">
+          <div class="card-line"><span class="key">name</span><span class="val">"Prabool Bharti"</span></div>
+          <div class="card-line"><span class="key">role</span><span class="val">"DevOps Trainee"</span></div>
+          <div class="card-line"><span class="key">degree</span><span class="val">"B.Tech CSE · 8.05 CGPA"</span></div>
+          <div class="card-line"><span class="key">location</span><span class="val">"Kharar, Punjab, IN"</span></div>
+          <div class="card-line"><span class="key">status</span><span class="val green">"open_to_work"</span></div>
+          <div class="card-line"><span class="key">learning</span><span class="val">[<br/>&nbsp;&nbsp;"Kubernetes",<br/>&nbsp;&nbsp;"Terraform",<br/>&nbsp;&nbsp;"System Design"<br/>]</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills-section" id="skills">
+    <div class="section-label">// 02 skills</div>
+    <h2>What I work with</h2>
+    <div class="skills-grid" id="skills-grid">
+      <!-- filled by JS -->
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects-section" id="projects">
+    <div class="section-label">// 03 projects</div>
+    <h2>Things I've<br/><span class="italic">shipped.</span></h2>
+    <div class="projects-grid" id="projects-grid">
+      <div class="loading-state">Loading projects...</div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section class="blog-section" id="blog">
+    <div class="section-label">// 04 blog</div>
+    <h2>Learning in<br/><span class="italic">public.</span></h2>
+    <p class="blog-sub">I write about what I learn — Docker, Linux, AWS, and DevOps concepts explained the way I wish someone had explained them to me.</p>
+    <div class="blog-grid" id="blog-grid">
+      <div class="loading-state">Loading posts...</div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="section-label">// 05 contact</div>
+    <div class="contact-inner">
+      <h2>Let's connect.</h2>
+      <p>Open to DevOps internships, collaborations, or just a good tech conversation.</p>
+      <div class="contact-form-wrap">
+        <div class="form-group">
+          <input type="text" id="c-name" placeholder="Your name" />
+        </div>
+        <div class="form-group">
+          <input type="email" id="c-email" placeholder="Your email" />
+        </div>
+        <div class="form-group">
+          <textarea id="c-msg" placeholder="Your message" rows="4"></textarea>
+        </div>
+        <button class="btn-primary" id="send-btn" onclick="sendMessage()">Send Message</button>
+        <div id="form-status" class="form-status"></div>
+      </div>
+      <div class="social-links">
+        <a href="#">GitHub</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Twitter</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span>Built & deployed by Prabool · 2025</span>
+    <span class="footer-stack">Node.js · Docker · EC2 · Nginx</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

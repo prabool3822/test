@@ -1,0 +1,53 @@
+# =====================================================
+# docker-compose.yml
+# This file defines ALL services and runs them together
+# Command to run everything: docker-compose up -d
+# Command to stop everything: docker-compose down
+# =====================================================
+
+version: '3.8'
+
+services:
+
+  # ---- BACKEND SERVICE ----
+  backend:
+    build: ./backend          # Build from backend/Dockerfile
+    container_name: portfolio-backend
+    restart: unless-stopped   # Auto-restart if it crashes (production must-have)
+    environment:
+      - PORT=3001
+      - NODE_ENV=production
+    volumes:
+      # Persist data even when container restarts
+      - ./backend/data:/app/data
+    networks:
+      - portfolio-network
+    # Don't expose port to outside - only frontend container can reach it
+    expose:
+      - "3001"
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  # ---- FRONTEND SERVICE ----
+  frontend:
+    build: ./frontend         # Build from frontend/Dockerfile
+    container_name: portfolio-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"               # Map host port 80 to container port 80
+    depends_on:
+      backend:
+        condition: service_healthy   # Wait for backend to be healthy first
+    networks:
+      - portfolio-network
+
+# ---- NETWORK ----
+# Both containers share this network
+# This is how 'backend' hostname resolves inside the frontend container
+networks:
+  portfolio-network:
+    driver: bridge
