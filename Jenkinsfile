@@ -3,8 +3,8 @@ pipeline {
 
     environment {
         DOCKERHUB_USERNAME = "prabool3822"
-        BACKEND_IMAGE = "${DOCKERHUB_USERNAME}/portfolio-backend"
-        FRONTEND_IMAGE = "${DOCKERHUB_USERNAME}/portfolio-frontend"
+        BACKEND_IMAGE = "${DOCKERHUB_USERNAME}/backend"
+        FRONTEND_IMAGE = "${DOCKERHUB_USERNAME}/frontend"
 
         EC2_HOST = "13.233.168.37"
         EC2_USER = "ubuntu"
