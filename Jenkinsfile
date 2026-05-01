@@ -60,8 +60,8 @@ pipeline {
                         fi
 
                         cd $APP_DIR
+                        set -e
                         git pull origin main
-
                         docker compose down
                         docker pull $BACKEND_IMAGE:latest
                         docker pull $FRONTEND_IMAGE:latest
