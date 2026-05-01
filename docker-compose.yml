@@ -5,11 +5,9 @@
 # Command to stop everything: docker-compose down
 # =====================================================
 
-version: '3.8'
-
 services:
   backend:
-    image: prabool3822/backend:latest
+    image: prabool3822/portfolio-backend:latest
     container_name: portfolio-backend
     restart: unless-stopped
     environment:
@@ -21,22 +19,15 @@ services:
       - portfolio-network
     expose:
       - "3001"
-    healthcheck:
-      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3001/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 10s
 
   frontend:
-    image: prabool3822/frontend:latest
+    image: prabool3822/portfolio-frontend:latest
     container_name: portfolio-frontend
     restart: unless-stopped
     ports:
       - "80:80"
     depends_on:
-      backend:
-        condition: service_healthy
+      - backend
     networks:
       - portfolio-network
 
