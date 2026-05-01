@@ -7,7 +7,7 @@
 
 services:
   backend:
-    image: prabool3822/portfolio-backend:latest
+    image: prabool3822/backend:latest
     container_name: portfolio-backend
     restart: unless-stopped
     environment:
@@ -21,7 +21,7 @@ services:
       - "3001"
 
   frontend:
-    image: prabool3822/portfolio-frontend:latest
+    image: prabool3822/frontend:latest
     container_name: portfolio-frontend
     restart: unless-stopped
     ports:
