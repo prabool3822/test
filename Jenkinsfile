@@ -3,19 +3,20 @@ pipeline {
 
     environment {
         DOCKERHUB_USERNAME = "prabool3822"
-        BACKEND_IMAGE = "${DOCKERHUB_USERNAME}/backend"
-        FRONTEND_IMAGE = "${DOCKERHUB_USERNAME}/frontend"
+        BACKEND_IMAGE = "${DOCKERHUB_USERNAME}/portfolio-backend"
+        FRONTEND_IMAGE = "${DOCKERHUB_USERNAME}/portfolio-frontend"
 
         EC2_HOST = "13.233.168.37"
         EC2_USER = "ubuntu"
         APP_DIR = "/home/ubuntu/test"
     }
 
-    stage('Checkout') {
-        steps {
-            echo "Code already checked out from SCM"
+    stages {
+        stage('Checkout') {
+            steps {
+                echo "Code already checked out by Jenkins SCM"
+            }
         }
-    }
 
         stage('Build Images') {
             steps {
@@ -30,10 +31,12 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(
                     credentialsId: 'dockerhub-creds',
-                    usernameVariable: 'USER',
-                    passwordVariable: 'PASS'
+                    usernameVariable: 'DOCKER_USER',
+                    passwordVariable: 'DOCKER_PASS'
                 )]) {
-                    sh 'echo $PASS | docker login -u $USER --password-stdin'
+                    sh '''
+                    echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+                    '''
                 }
             }
         }
@@ -52,12 +55,18 @@ pipeline {
                 sshagent(['ec2-ssh-key']) {
                     sh '''
                     ssh -o StrictHostKeyChecking=no $EC2_USER@$EC2_HOST "
-                        cd $APP_DIR || git clone https://github.com/prabool3822/test.git $APP_DIR
+                        if [ ! -d $APP_DIR ]; then
+                            git clone https://github.com/prabool3822/test.git $APP_DIR
+                        fi
+
                         cd $APP_DIR
+                        git pull origin main
+
                         docker-compose down
                         docker pull $BACKEND_IMAGE:latest
                         docker pull $FRONTEND_IMAGE:latest
                         docker-compose up -d
+                        docker ps
                     "
                     '''
                 }
