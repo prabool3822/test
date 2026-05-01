@@ -15,6 +15,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
+                git branch: 'main',
                 git 'https://github.com/prabool3822/test.git'
             }
         }
