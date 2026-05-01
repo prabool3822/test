@@ -11,14 +11,11 @@ pipeline {
         APP_DIR = "/home/ubuntu/test"
     }
 
-    stages {
-
-        stage('Checkout') {
-            steps {
-                git branch: 'main',
-                git 'https://github.com/prabool3822/test.git'
-            }
+    stage('Checkout') {
+        steps {
+            echo "Code already checked out from SCM"
         }
+    }
 
         stage('Build Images') {
             steps {
