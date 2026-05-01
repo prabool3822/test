@@ -218,4 +218,3 @@ Every push to `main` will:
 - **Service orchestration**: Docker Compose runs multiple containers
 - **CI/CD**: GitHub Actions automates the entire deploy pipeline
 - **Health checks**: `/health` endpoint tells load balancers if app is alive
-# test
