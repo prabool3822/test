@@ -62,10 +62,10 @@ pipeline {
                         cd $APP_DIR
                         git pull origin main
 
-                        docker-compose down
+                        docker compose down
                         docker pull $BACKEND_IMAGE:latest
                         docker pull $FRONTEND_IMAGE:latest
-                        docker-compose up -d
+                        docker compose up -d
                         docker ps
                     "
                     '''
